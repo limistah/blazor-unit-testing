@@ -1,3 +1,52 @@
 @page "/"
 
-<h1>Pet - Care Giver </h1>
+
+@page "/fetchdata"
+
+@using BlazorApp.Data
+@inject PetService PetService
+@inject CareGiverService CareGiverService
+
+<h1>Pet Care Giver</h1>
+
+<p>Manage Pets and Care Givers, also assign pets to care givers </p>
+
+@if (careGivers == null || pets == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Temp. (C)</th>
+                <th>Temp. (F)</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @* @foreach (var forecast in forecasts)
+            {
+                <tr>
+                    <td>@forecast.Date.ToShortDateString()</td>
+                    <td>@forecast.TemperatureC</td>
+                    <td>@forecast.TemperatureF</td>
+                    <td>@forecast.Summary</td>
+                </tr>
+            } *@
+        </tbody>
+    </table>
+}
+
+@code {
+    private CareGiver[] careGivers;
+    private Pet[] pets;
+
+    protected override async Task OnInitializedAsync()
+    {
+        careGivers = await CareGiverService.GetCareGiverAsync(DateTime.Now);
+        pets = await PetService.GetPetAsync(DateTime.Now);
+    }
+}

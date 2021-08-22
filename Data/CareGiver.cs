@@ -12,7 +12,7 @@ namespace BlazorApp.Data
 
         public int PetId { get; set; }
 
-        public object Pet => 32 + (int)(TemperatureC / 0.5556);
+        public object Pet => 32 + (int)(12 / 0.5556);
 
     }
 }

@@ -82,7 +82,15 @@ using BlazorApp.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "/Users/limistah/work/dotnet/BlazorApp/Pages/Index.razor"
+using BlazorApp.Data;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/")]
+    [Microsoft.AspNetCore.Components.RouteAttribute("/fetchdata")]
     public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -90,6 +98,23 @@ using BlazorApp.Shared;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 43 "/Users/limistah/work/dotnet/BlazorApp/Pages/Index.razor"
+       
+    private CareGiver[] careGivers;
+    private Pet[] pets;
+
+    protected override async Task OnInitializedAsync()
+    {
+        careGivers = await CareGiverService.GetCareGiverAsync(DateTime.Now);
+        pets = await PetService.GetPetAsync(DateTime.Now);
+    }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private CareGiverService CareGiverService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private PetService PetService { get; set; }
     }
 }
 #pragma warning restore 1591

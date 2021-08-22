@@ -10,7 +10,7 @@ namespace BlazorApp.Data
 
         public int CareGiverId { get; set; }
 
-        public object CareGiver => 32 + (int)(TemperatureC / 0.5556);
+        public object CareGiver => 32 + (int)(10 / 0.5556);
 
     }
 }
