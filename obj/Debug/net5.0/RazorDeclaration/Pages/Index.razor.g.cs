@@ -98,43 +98,55 @@ using BlazorApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 84 "/Users/limistah/work/dotnet/BlazorApp/Pages/Index.razor"
+#line 159 "/Users/limistah/work/dotnet/BlazorApp/Pages/Index.razor"
        
     private bool showCareGiverForm;
     private bool showPetForm;
     private CareGiver[] careGivers;
     private Pet[] pets;
 
+    private string petName;
     private string careGiverName;
     private string careGiverEmail;
     private bool formHasError;
     private string addCareGiverError;
-
+    private string addPetError;
     protected override async Task OnInitializedAsync()
     {
-        careGivers = await CareGiverService.GetCareGiverAsync(DateTime.Now);
-        pets = await PetService.GetPetAsync(DateTime.Now);
+        careGivers = await CareGiverService.GetCareGiverAsync();
+        pets = await PetService.GetPetAsync();
     }
     private void CreateCareGiver () 
     {
         CareGiver _careGiver = new CareGiver();
-        _careGiver.Name = this.careGiverName;
-        _careGiver.Email = this.careGiverEmail;
-        this.careGivers.Append(_careGiver);
-        this.careGiverName = "";
-        this.careGiverEmail = "";
-        this.showCareGiverForm = false;
+        _careGiver.Name = careGiverName;
+        _careGiver.Email = careGiverEmail;
+        _careGiver.ID = DateTime.Now.Millisecond;
+        careGivers.Append(_careGiver);
+        careGiverName = "";
+        careGiverEmail = "";
+        showCareGiverForm = false;
     }
 
     private void ShowCareGiverForm () 
     {
-        this.showCareGiverForm = true;
+        showCareGiverForm = true;
     }
 
     
     private void ShowPetForm () 
     {
-        this.showPetForm = true;
+        showPetForm = true;
+    }
+
+    private void CreatePet () 
+    {
+        Pet _pet = new Pet();
+        _pet.Name = petName;
+        _pet.ID = DateTime.Now.Millisecond;
+        pets.Append(_pet);
+        petName = "";
+        showPetForm = false;
     }
 
     private void SetCareGiverName () 

@@ -4,15 +4,13 @@ namespace BlazorApp.Data
 {
     public class CareGiver
     {
-        public DateTime Date { get; set; }
+        public int ID { get; set; }
 
         public string Name { get; set; }
 
         public string Email { get; set; }
 
-        public int PetId { get; set; }
-
-        public object Pet => 32 + (int)(12 / 0.5556);
+        public Pet Pet { get; set; }
 
     }
 }

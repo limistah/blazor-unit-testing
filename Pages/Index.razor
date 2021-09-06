@@ -14,7 +14,7 @@
 @if (showCareGiverForm)
 {
 
-<h3>Add Pet Care Giver</h3>
+<h3>Add A Care Giver</h3>
 
 <table>
     <tr>
@@ -52,31 +52,106 @@
     </tr>
 </table>
 }
-@if (careGivers == null || pets == null)
+
+@if (showPetForm)
+{
+
+<h3>Add A Pet</h3>
+
+<table>
+    <tr>
+        <td>
+            <label for="name">Name</label>
+        </td>
+        <td>
+            <input @bind="@petName" placeholder="name" id="name" name="name"/>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        
+        <td>
+            @if (formHasError)
+        {
+            <div>@addPetError</div>
+        }
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <button @onclick="CreatePet">Create Provider</button>
+        </td>
+    </tr>
+</table>
+}
+
+@if (careGivers == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
+    <h3>Registered Care Givers</h3>
+
     <table class="table">
         <thead>
             <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Pet Name</th>
+                <th>Pet ID</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            @* @foreach (var forecast in forecasts)
+            @foreach (var careGiver in careGivers)
             {
                 <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
+                    <td>@careGiver.ID</td>
+                    <td>@careGiver.Name</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <button>Assing a pet</button>
+                    </td>
                 </tr>
-            } *@
+            }
+        </tbody>
+    </table>
+}
+
+@if (pets == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <h3>Registered Pets</h3>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Care Giver Name</th>
+                <th>Care Giver ID</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var pet in pets)
+            {
+                <tr>
+                    <td>@pet.ID</td>
+                    <td>@pet.Name</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <button>Assing care giver</button>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 }
@@ -87,36 +162,48 @@ else
     private CareGiver[] careGivers;
     private Pet[] pets;
 
+    private string petName;
     private string careGiverName;
     private string careGiverEmail;
     private bool formHasError;
     private string addCareGiverError;
-
+    private string addPetError;
     protected override async Task OnInitializedAsync()
     {
-        careGivers = await CareGiverService.GetCareGiverAsync(DateTime.Now);
-        pets = await PetService.GetPetAsync(DateTime.Now);
+        careGivers = await CareGiverService.GetCareGiverAsync();
+        pets = await PetService.GetPetAsync();
     }
     private void CreateCareGiver () 
     {
         CareGiver _careGiver = new CareGiver();
-        _careGiver.Name = this.careGiverName;
-        _careGiver.Email = this.careGiverEmail;
-        this.careGivers.Append(_careGiver);
-        this.careGiverName = "";
-        this.careGiverEmail = "";
-        this.showCareGiverForm = false;
+        _careGiver.Name = careGiverName;
+        _careGiver.Email = careGiverEmail;
+        _careGiver.ID = DateTime.Now.Millisecond;
+        careGivers.Append(_careGiver);
+        careGiverName = "";
+        careGiverEmail = "";
+        showCareGiverForm = false;
     }
 
     private void ShowCareGiverForm () 
     {
-        this.showCareGiverForm = true;
+        showCareGiverForm = true;
     }
 
     
     private void ShowPetForm () 
     {
-        this.showPetForm = true;
+        showPetForm = true;
+    }
+
+    private void CreatePet () 
+    {
+        Pet _pet = new Pet();
+        _pet.Name = petName;
+        _pet.ID = DateTime.Now.Millisecond;
+        pets.Append(_pet);
+        petName = "";
+        showPetForm = false;
     }
 
     private void SetCareGiverName () 

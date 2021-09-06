@@ -11,12 +11,12 @@ namespace BlazorApp.Data
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        public Task<Pet[]> GetPetAsync(DateTime startDate)
+        public Task<Pet[]> GetPetAsync()
         {
             var rng = new Random();
             return Task.FromResult(Enumerable.Range(1, 5).Select(index => new Pet
             {
-                Date = startDate.AddDays(index),
+                ID = DateTime.Now.Millisecond,
                 Name = PetNames[rng.Next(PetNames.Length)]
             }).ToArray());
         }
