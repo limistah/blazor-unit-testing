@@ -48,3 +48,5 @@
 /Users/limistah/work/dotnet/BlazorApp/obj/Debug/net5.0/BlazorApp.pdb
 /Users/limistah/work/dotnet/BlazorApp/obj/Debug/net5.0/BlazorApp.genruntimeconfig.cache
 /Users/limistah/work/dotnet/BlazorApp/obj/Debug/net5.0/BlazorApp.csproj.CopyComplete
+/Users/limistah/work/dotnet/BlazorApp/obj/Debug/net5.0/RazorDeclaration/Pages/CreateCareGiver.razor.g.cs
+/Users/limistah/work/dotnet/BlazorApp/obj/Debug/net5.0/Razor/Pages/CreateCareGiver.razor.g.cs

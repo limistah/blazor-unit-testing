@@ -1,0 +1,47 @@
+@page "/create-care-giver"
+
+@using BlazorApp.Data
+@inject PetService PetService
+@inject CareGiverService CareGiverService
+
+
+<h1>Add Pet Care Giver</h1>
+
+<table>
+    <tr>
+        <td>
+            <label for="name">Name</label>
+        </td>
+        <td>
+            <input @bind="@name" placeholder="name" id="name" name="name"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+<label for="email">Email</label>
+        </td>
+        <td>
+<input @bind="@email" placeholder="email" id="email" name="email"  />
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+    <button @onclick="CreateProvider">Create Provider</button>
+
+        </td>
+    </tr>
+</table>
+
+@code {
+
+    string name;
+    string email;
+    private void Create () {}
+    public CareGiver _careGiver = new CareGiver();
+
+    public void CreateProvider () {
+        _careGiver.Name = name;
+        _careGiver.Email = email;
+    }
+}

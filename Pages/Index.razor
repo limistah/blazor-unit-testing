@@ -1,16 +1,57 @@
 @page "/"
 
 
-@page "/fetchdata"
-
 @using BlazorApp.Data
 @inject PetService PetService
 @inject CareGiverService CareGiverService
 
 <h1>Pet Care Giver</h1>
 
-<p>Manage Pets and Care Givers, also assign pets to care givers </p>
+<p>Manage Pets and Care Givers, also assign pets to care givers</p>
+<button @onclick="ShowCareGiverForm">Add a new Pet</button>
+<button @onclick="ShowPetForm">Add a new Care giver</button>
 
+@if (showCareGiverForm)
+{
+
+<h3>Add Pet Care Giver</h3>
+
+<table>
+    <tr>
+        <td>
+            <label for="name">Name</label>
+        </td>
+        <td>
+            <input @bind="@careGiverName" placeholder="name" id="name" name="name"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+<label for="email">Email</label>
+        </td>
+        <td>
+<input @bind="@careGiverEmail" placeholder="email" id="email" name="email"  />
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        
+        <td>
+            @if (formHasError)
+        {
+            <div>@addCareGiverError</div>
+        }
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+    <button @onclick="CreateCareGiver">Create Provider</button>
+
+        </td>
+    </tr>
+</table>
+}
 @if (careGivers == null || pets == null)
 {
     <p><em>Loading...</em></p>
@@ -41,12 +82,44 @@ else
 }
 
 @code {
+    private bool showCareGiverForm;
+    private bool showPetForm;
     private CareGiver[] careGivers;
     private Pet[] pets;
+
+    private string careGiverName;
+    private string careGiverEmail;
+    private bool formHasError;
+    private string addCareGiverError;
 
     protected override async Task OnInitializedAsync()
     {
         careGivers = await CareGiverService.GetCareGiverAsync(DateTime.Now);
         pets = await PetService.GetPetAsync(DateTime.Now);
+    }
+    private void CreateCareGiver () 
+    {
+        CareGiver _careGiver = new CareGiver();
+        _careGiver.Name = this.careGiverName;
+        _careGiver.Email = this.careGiverEmail;
+        this.careGivers.Append(_careGiver);
+        this.careGiverName = "";
+        this.careGiverEmail = "";
+        this.showCareGiverForm = false;
+    }
+
+    private void ShowCareGiverForm () 
+    {
+        this.showCareGiverForm = true;
+    }
+
+    
+    private void ShowPetForm () 
+    {
+        this.showPetForm = true;
+    }
+
+    private void SetCareGiverName () 
+    {
     }
 }

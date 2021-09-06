@@ -83,14 +83,14 @@ using BlazorApp.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "/Users/limistah/work/dotnet/BlazorApp/Pages/Index.razor"
+#line 3 "/Users/limistah/work/dotnet/BlazorApp/Pages/CreateCareGiver.razor"
 using BlazorApp.Data;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/")]
-    public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/create-care-giver")]
+    public partial class CreateCareGiver : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -98,47 +98,17 @@ using BlazorApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 84 "/Users/limistah/work/dotnet/BlazorApp/Pages/Index.razor"
+#line 36 "/Users/limistah/work/dotnet/BlazorApp/Pages/CreateCareGiver.razor"
        
-    private bool showCareGiverForm;
-    private bool showPetForm;
-    private CareGiver[] careGivers;
-    private Pet[] pets;
 
-    private string careGiverName;
-    private string careGiverEmail;
-    private bool formHasError;
-    private string addCareGiverError;
+    string name;
+    string email;
+    private void Create () {}
+    public CareGiver _careGiver = new CareGiver();
 
-    protected override async Task OnInitializedAsync()
-    {
-        careGivers = await CareGiverService.GetCareGiverAsync(DateTime.Now);
-        pets = await PetService.GetPetAsync(DateTime.Now);
-    }
-    private void CreateCareGiver () 
-    {
-        CareGiver _careGiver = new CareGiver();
-        _careGiver.Name = this.careGiverName;
-        _careGiver.Email = this.careGiverEmail;
-        this.careGivers.Append(_careGiver);
-        this.careGiverName = "";
-        this.careGiverEmail = "";
-        this.showCareGiverForm = false;
-    }
-
-    private void ShowCareGiverForm () 
-    {
-        this.showCareGiverForm = true;
-    }
-
-    
-    private void ShowPetForm () 
-    {
-        this.showPetForm = true;
-    }
-
-    private void SetCareGiverName () 
-    {
+    public void CreateProvider () {
+        _careGiver.Name = name;
+        _careGiver.Email = email;
     }
 
 #line default
