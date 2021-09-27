@@ -79,6 +79,27 @@ using BlazorApp.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "/Users/limistah/work/dotnet/BlazorApp/_Imports.razor"
+using Bunit;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "/Users/limistah/work/dotnet/BlazorApp/_Imports.razor"
+using Bunit.TestDoubles;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "/Users/limistah/work/dotnet/BlazorApp/_Imports.razor"
+using Xunit;
+
+#line default
+#line hidden
+#nullable disable
     public partial class SurveyPrompt : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998

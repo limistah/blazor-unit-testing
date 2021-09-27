@@ -50,3 +50,15 @@
 /Users/limistah/work/dotnet/BlazorApp/obj/Debug/net5.0/BlazorApp.csproj.CopyComplete
 /Users/limistah/work/dotnet/BlazorApp/obj/Debug/net5.0/RazorDeclaration/Pages/CreateCareGiver.razor.g.cs
 /Users/limistah/work/dotnet/BlazorApp/obj/Debug/net5.0/Razor/Pages/CreateCareGiver.razor.g.cs
+/Users/limistah/work/dotnet/BlazorApp/bin/Debug/net5.0/AngleSharp.dll
+/Users/limistah/work/dotnet/BlazorApp/bin/Debug/net5.0/AngleSharp.Css.dll
+/Users/limistah/work/dotnet/BlazorApp/bin/Debug/net5.0/AngleSharp.Diffing.dll
+/Users/limistah/work/dotnet/BlazorApp/bin/Debug/net5.0/AngleSharpWrappers.dll
+/Users/limistah/work/dotnet/BlazorApp/bin/Debug/net5.0/Bunit.Core.dll
+/Users/limistah/work/dotnet/BlazorApp/bin/Debug/net5.0/Bunit.Web.dll
+/Users/limistah/work/dotnet/BlazorApp/bin/Debug/net5.0/xunit.abstractions.dll
+/Users/limistah/work/dotnet/BlazorApp/bin/Debug/net5.0/xunit.assert.dll
+/Users/limistah/work/dotnet/BlazorApp/bin/Debug/net5.0/xunit.core.dll
+/Users/limistah/work/dotnet/BlazorApp/bin/Debug/net5.0/xunit.execution.dotnet.dll
+/Users/limistah/work/dotnet/BlazorApp/obj/Debug/net5.0/RazorDeclaration/Pages/IndexTest.razor.g.cs
+/Users/limistah/work/dotnet/BlazorApp/obj/Debug/net5.0/Razor/Pages/IndexTest.razor.g.cs

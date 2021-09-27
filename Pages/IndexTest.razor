@@ -1,0 +1,15 @@
+@code
+{
+  [Fact]
+  public void IndexComponentRendersCorrectly()
+  {
+    // Arrange
+    using var ctx = new TestContext();
+
+    // Act
+    var cut = ctx.Render(@<Index />);
+
+    // Assert
+    cut.MarkupMatches(@<h1>Hello world from Blazor</h1>);
+  }
+}
